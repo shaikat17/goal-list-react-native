@@ -20,6 +20,11 @@ export default function App() {
     // console.log('hello')
   }
 
+  const deleteGoalHandler = (item) => {
+    console.log(item)
+    setGoalList( goals => goals.filter( goal => goal !== item))
+  }
+
 
   return (
     <View style={styles.appContainer}>
@@ -27,7 +32,7 @@ export default function App() {
       <View style={styles.goalsContainer}>
         <FlatList data={goalList} renderItem={item => {
           return (
-            <GoalItem item={item.item}/>
+            <GoalItem item={item.item} deleteGoalHandler={deleteGoalHandler} />
           )
         }} keyExtractor={(item, index) => index}/>
       </View>
