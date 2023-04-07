@@ -16,6 +16,10 @@ export default function App() {
   }
 
   const addGoalHandler = () => {
+    if(!inputValue) {
+      alert('Please Enter a Task')
+      return
+    }
     setGoalList(goals => [...goals, inputValue])
     setInputValue('')
     modalValueHandle()
@@ -33,6 +37,8 @@ export default function App() {
 
 
   return (
+    <>
+    <StatusBar style='auto'/>
     <View style={styles.appContainer}>
       <Button title='Add New Goal' color='#eb3b5a' onPress={modalValueHandle} />
       <Goalinput addGoalHandler={addGoalHandler} modalValueHandle={modalValueHandle} visValue={modalValue} value={inputValue} goalInputHandler={goalInputHandler} />
@@ -44,6 +50,7 @@ export default function App() {
         }} keyExtractor={(item, index) => index}/>
       </View>
     </View>
+    </>
   );
 }
 
