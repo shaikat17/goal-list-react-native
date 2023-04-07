@@ -18,6 +18,7 @@ export default function App() {
   const addGoalHandler = () => {
     setGoalList(goals => [...goals, inputValue])
     setInputValue('')
+    modalValueHandle()
     // console.log('hello')
   }
 
@@ -27,14 +28,14 @@ export default function App() {
   }
 
   const modalValueHandle = () => {
-    setModalValue(true)
+    setModalValue(!modalValue)
   }
 
 
   return (
     <View style={styles.appContainer}>
       <Button title='Add New Goal' color='#eb3b5a' onPress={modalValueHandle} />
-      <Goalinput addGoalHandler={addGoalHandler} visValue={modalValue} value={inputValue} goalInputHandler={goalInputHandler} />
+      <Goalinput addGoalHandler={addGoalHandler} modalValueHandle={modalValueHandle} visValue={modalValue} value={inputValue} goalInputHandler={goalInputHandler} />
       <View style={styles.goalsContainer}>
         <FlatList data={goalList} renderItem={item => {
           return (
