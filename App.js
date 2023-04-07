@@ -6,6 +6,7 @@ import GoalItem from './components/GoalItem';
 import Goalinput from './components/Goalinput';
 
 export default function App() {
+  const [modalValue, setModalValue] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [goalList, setGoalList] = useState([])
 
@@ -25,10 +26,15 @@ export default function App() {
     setGoalList( goals => goals.filter( goal => goal !== item))
   }
 
+  const modalValueHandle = () => {
+    setModalValue(true)
+  }
+
 
   return (
     <View style={styles.appContainer}>
-      <Goalinput addGoalHandler={addGoalHandler} value={inputValue} goalInputHandler={goalInputHandler} />
+      <Button title='Add New Goal' color='#eb3b5a' onPress={modalValueHandle} />
+      <Goalinput addGoalHandler={addGoalHandler} visValue={modalValue} value={inputValue} goalInputHandler={goalInputHandler} />
       <View style={styles.goalsContainer}>
         <FlatList data={goalList} renderItem={item => {
           return (
