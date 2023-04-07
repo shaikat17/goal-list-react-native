@@ -4,7 +4,7 @@ const GoalItem = ({ item, deleteGoalHandler }) => {
   // console.log(item)
   return (
     <Pressable onPress={() => deleteGoalHandler(item
-    )}>
+    )} android_ripple={{color: '#eb3b5a'}}>
       <View style={styles.goalItem}>
         <Text style={styles.goalText}>{item}</Text>
       </View>

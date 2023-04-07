@@ -21,7 +21,7 @@ export default function App() {
   }
 
   const deleteGoalHandler = (item) => {
-    console.log(item)
+    // console.log(item)
     setGoalList( goals => goals.filter( goal => goal !== item))
   }
 
